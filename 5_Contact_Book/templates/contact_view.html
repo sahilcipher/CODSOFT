@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Contacts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+
+<div class="login-box2">
+    <center><h2 class="h2_text">View Contacts</h2></center>
+    <a href="/search" class="btn">Search</a>
+    <a href="/" class="btn">Add Contact</a>
+    <center>
+<!--        Display Contacts-->
+    <table border="4px" class="styled-table">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr class="active-row">
+            <td>{{ contact[1] }}</td>
+            <td>{{ contact[2] }}</td>
+            <td>{{ contact[3] }}</td>
+            <td>{{ contact[4] }}</td>
+            <td>
+                <a href="/update/{{ contact[0] }}">Update</a>
+                <a href="/delete/{{ contact[0] }}">Delete</a>
+            </td>
+        </tr>
+<!--        Display Flash Message-->
+        {% endfor %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert" role="alert">
+              {% for message in messages %}
+                <b><p>[+] {{ message }}</p></b>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </table>
+        </center>
+</div>
+
+
+</body>
+</html>

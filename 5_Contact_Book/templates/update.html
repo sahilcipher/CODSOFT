@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="login-box2">
+    <center><h2 class="h2_text">Update Contact</h2></center>
+    <form action="{{ url_for('update', id=contact[0]) }}" method="POST" id="contactForm" onsubmit="return validateForm()">
+        <div class="user-box">
+<!--            User Input for Update Old Records-->
+            <input type="text" name="name" id="name" value="{{ contact[1] }}" required>
+            <label>Full Name</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="number" id="number" value="{{ contact[2] }}" required>
+            <label>Contact Number</label>
+        </div>
+        <div class="user-box">
+            <input type="email" name="email" id="email" value="{{ contact[3] }}" required>
+            <label>Email Address</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="address" id="address" value="{{ contact[4] }}" required>
+            <label>Address</label>
+        </div>
+        <center>
+            <button type="submit" class="btn">Update</button>
+        </center>
+    </form>
+</div>
+</body>
+</html>

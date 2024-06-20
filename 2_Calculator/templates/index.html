@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+ <div class="form-wrapper">
+    <div class="form-container">
+      <p class="title">Flask Calculator</p>
+      <form class="form" method="POST">
+<!--          User Input-->
+          <label> Enter Numbers here!</label>
+        <input type="text" class="input" placeholder="Number1" name="num1">
+        <input type="text" class="input" placeholder="Number2" name="num2">
+        <label for="operation">Choose an operation:</label>
+        <select id="operation" name="operation" class="input">
+          <option value="add">Addition</option>
+          <option value="sub">Subtraction</option>
+          <option value="div">Division</option>
+          <option value="multi">Multiplication</option>
+        </select>
+        <p class="page-link"></p>
+        <button class="form-btn" type="submit">Calculate</button>
+      </form>
+
+<!--        For Result Display-->
+      {% if total is not none %}
+        <p>Answer: {{ total }}</p>
+      {% endif %}
+
+    </div>
+</div>
+</body>
+</html>

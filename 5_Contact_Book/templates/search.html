@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Contacts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="login-box2">
+    <center><h2 class="h2_text">Search Contacts</h2></center>
+    <form action="{{ url_for('search') }}" method="POST" class="search-form">
+        <div class="user-box">
+<!--            Search Box-->
+            <input type="text" name="query" required>
+            <label>Search</label>
+        </div>
+        <center>
+            <button type="submit" class="btn">Search</button>
+            <a href="/view" class="btn">View</a>
+        </center>
+    </form>
+    {% if contacts is defined %}
+    <center>
+    <table border="4px" class="styled-table">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr class="active-row">
+            <td>{{ contact[1] }}</td>
+            <td>{{ contact[2] }}</td>
+            <td>{{ contact[3] }}</td>
+            <td>{{ contact[4] }}</td>
+            <td>
+                <a href="/update/{{ contact[0] }}">Update</a>
+                <a href="/delete/{{ contact[0] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </center>
+    {% endif %}
+</div>
+</body>
+</html>

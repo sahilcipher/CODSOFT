@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="form_area">
+        <p class="title">ROCK PAPER SCISSORS</p>
+        <form action="/" method="POST">
+            <div class="form_group">
+<!--                User Input-->
+                <label class="sub_title" for="name">Name</label>
+                <input placeholder="Player Name" class="form_style" type="text" id="name" name="name" required>
+            </div>
+            <div class="form_group">
+                <label class="sub_title" for="choice">Choice</label>
+                <select class="form_style" id="choice" name="choice">
+                    <option value="Rock">Rock</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Scissor">Scissors</option>
+                </select>
+            </div>
+            <div>
+                <button class="btn" type="submit">Play</button>
+            </div>
+<!--            Print Game Details-->
+            {% if True %}
+            <left>
+                <b><p>Username: {{ user }}</p>
+                <p>Your Choice: {{ choice }}</p>
+                <p>Computer Choice: {{ computer }}</p></b>
+                <h3>{{ result }}</h3>
+            </left>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

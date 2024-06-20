@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!--Contact Form-->
+<div class="login-box">
+    <center><h2 class="h2_text">Contact Book</h2></center>
+<!--    User Inputs-->
+    <form action="/" method="POST" id="contactForm" onsubmit="return validateForm()">
+        <div class="user-box">
+            <input type="text" name="name" id="name" required>
+            <label>Full Name</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="number" id="number" required>
+            <label>Contact Number</label>
+        </div>
+        <div class="user-box">
+            <input type="email" name="email" id="email" required>
+            <label>Email Address</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="address" id="address" required>
+            <label>Address</label>
+        </div>
+
+        <center>
+            <button type="submit" class="btn">ADD</button>
+            <a href="/view" class="btn">View</a>
+        </center>
+<!--        Flash Message-->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert" role="alert">
+              {% for message in messages %}
+                <b><p>[+] {{ message }}</p></b>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </form>
+</div>
+<!--Contact Form End-->
+
+
+<!--    JS for Validation-->
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value.trim();
+        var number = document.getElementById("number").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var address = document.getElementById("address").value.trim();
+
+        if (name === '' || number === '' || email === '' || address === '') {
+            alert("Please fill out all fields.");
+            return false; // Prevent form submission
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="card">
+    <h2>Password Generator</h2>
+    <div class="container">
+        <form action="/generate" method="POST">
+            <label for="password_length">Password Length: <span id="passwordLengthValue">12</span></label>
+            <input type="range" id="password_length" name="password_length" min="6" max="30" value="12" oninput="updatePasswordLength(this.value)">
+            <br>
+            <input type="checkbox" id="include_uppercase" name="include_uppercase" checked>
+            <label for="include_uppercase">Include Uppercase Letters</label><br>
+            <input type="checkbox" id="include_lowercase" name="include_lowercase" checked>
+            <label for="include_lowercase">Include Lowercase Letters</label><br>
+            <input type="checkbox" id="include_digits" name="include_digits" checked>
+            <label for="include_digits">Include Digits</label><br>
+            <input type="checkbox" id="include_symbols" name="include_symbols" checked>
+            <label for="include_symbols">Include Symbols</label><br>
+            <button type="submit" class="btn">Generate Password</button>
+        </form>
+<!--        display password-->
+        {% if password %}
+            <h2>Generated Password:</h2>
+            <h4>{{ password }}</h4>
+        {% endif %}
+    </div>
+
+    <script>
+        function updatePasswordLength(value) {
+            document.getElementById('passwordLengthValue').textContent = value;
+        }
+    </script>
+</div>
+</body>
+</html>
